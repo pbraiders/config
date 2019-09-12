@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.3/phpunit.xsd"
+    colors="false"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    backupGlobals="false"
+    backupStaticAttributes="false"
+    cacheResult="false"
+    cacheTokens="true"
+    forceCoversAnnotation="true"
+    printerClass="PHPUnit\TextUI\ResultPrinter"
+    processIsolation="false"
+    stopOnError="false"
+    stopOnFailure="true"
+    stopOnIncomplete="false"
+    stopOnSkipped="false"
+    stopOnRisky="false"
+    testSuiteLoaderClass="PHPUnit\Runner\StandardTestSuiteLoader"
+    timeoutForSmallTests="1"
+    timeoutForMediumTests="10"
+    timeoutForLargeTests="60"
+    verbose="true"
+    bootstrap="vendor/autoload.php">
+    <php>
+        <const name="PBR_PATH" value="/var"/>
+    </php>
+    <testsuites>
+        <testsuite name="Pbraiders Test Suite">
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-html"
+             target="doc/codecoverage"
+             lowUpperBound="35"
+             highLowerBound="70"/>
+        <log type="testdox-html" target="doc/testdox/testdox.html"/>
+    </logging>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+            <exclude>
+                <directory>old</directory>
+                <directory>tests</directory>
+                <directory>vendor</directory>
+                <directory>public</directory>
+                <file>index.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

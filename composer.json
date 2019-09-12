@@ -1,0 +1,52 @@
+{
+    "name": "pbraiders/container",
+    "description": "PSR-11 dependency injection container factory",
+    "homepage": "https://github.com/pbraiders/container",
+    "readme": "README.md",
+    "time": "2019-09-10",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Olivier Jullien",
+            "homepage": "https://github.com/ojullien",
+            "email": "contact@pbraiders.fr"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "league/container": "^3.3",
+        "php-di/php-di": "^6.0",
+        "psr/container": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pbraiders\\Container\\": "src/"
+        }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "phpmd/phpmd": "@stable",
+        "phpstan/phpstan": "^0.11.15",
+        "phpunit/phpunit": "^8",
+        "squizlabs/php_codesniffer": "*",
+        "vimeo/psalm": "^3.4"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PbraidersTest\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "vendor-dir": "vendor"
+    },
+    "scripts": {
+        "check": "vendor/bin/phpcs --standard=./phpcs.xml",
+        "fix": "vendor/bin/phpcbf --standard=./phpcs.xml",
+        "fixer": "vendor/bin/php-cs-fixer fix --verbose src",
+        "mess": "vendor/bin/phpmd src text ./phpmd.xml --exclude '*/vendor/*,*/old/*'",
+        "analyse": "vendor/bin/phpstan analyse src --level=max -c ./phpstan.neon --no-progress",
+        "test": "vendor/bin/phpunit --colors=always"
+    }
+}

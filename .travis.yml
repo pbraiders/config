@@ -1,0 +1,21 @@
+sudo: false
+
+language: php
+
+php:
+  - '7.3'
+
+cache:
+ directories:
+   - $HOME/.composer/cache
+
+before_script:
+ - composer self-update
+ - composer install --prefer-dist --no-interaction --no-progress
+ - cd $TRAVIS_BUILD_DIR
+
+matrix:
+  fast_finish: true
+
+notifications:
+  email: false
