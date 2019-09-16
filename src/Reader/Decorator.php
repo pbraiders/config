@@ -20,7 +20,7 @@ namespace Pbraiders\Config\Reader;
 abstract class Decorator implements ReaderInterface
 {
     /**
-     * @var \Pbraiders\Config\Reader\ReaderInterface
+     * @var \Pbraiders\Config\Reader\ReaderInterface Instance of a reader.
      */
     protected $pReader;
 

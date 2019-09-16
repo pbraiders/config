@@ -27,12 +27,11 @@ class FileOptional implements ReaderInterface
      * Set the source to read
      *
      * @param string $source Usely, a filename.
-     * @return self
+     * @return void
      */
-    public function setSource(string $source): self
+    public function setSource(string $source): void
     {
         $this->sSource = trim($source);
-        return $this;
     }
 
     /**
@@ -48,6 +47,9 @@ class FileOptional implements ReaderInterface
 
         if ((strlen($this->sSource) > 0) && is_file($this->sSource) && is_readable($this->sSource)) {
             $aReturn = require $this->sSource;
+            if (! is_array($aReturn)) {
+                $aReturn = [];
+            }
         }
 
         return $aReturn;

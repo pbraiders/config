@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 namespace Pbraiders\Config;
 
+use \ArrayAccess;
+
 /**
  * Config factory interface.
  */

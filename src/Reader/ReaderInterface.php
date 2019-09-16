@@ -11,7 +11,7 @@ declare(strict_types=1);
 namespace Pbraiders\Config\Reader;
 
 /**
- * Config factory interface.
+ * Config reader interface.
  */
 interface ReaderInterface
 {
@@ -19,9 +19,9 @@ interface ReaderInterface
      * Set the source to read
      *
      * @param string $source Usely, a filename.
-     * @return self
+     * @return void
      */
-    public function setSource(string $source): self;
+    public function setSource(string $source): void;
 
     /**
      * Read from a source and create an array.

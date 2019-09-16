@@ -11,12 +11,12 @@ declare(strict_types=1);
 namespace Pbraiders\Config\Reader;
 
 /**
- * Builds an array from a string.
+ * Builds an array from a json encoded string.
  */
-class StringBuffer implements ReaderInterface
+class JsonBuffer implements ReaderInterface
 {
     /**
-     * Source to read.
+     * JSON encoded string.
      *
      * @var string sSource.
      */
@@ -26,26 +26,29 @@ class StringBuffer implements ReaderInterface
      * Set the source to read.
      *
      * @param string $source
-     * @return self
+     * @return void
      */
-    public function setSource(string $source): self
+    public function setSource(string $source): void
     {
         $this->sSource = trim($source);
-        return $this;
     }
 
     /**
      * Read the buffer and returns an array.
      * Returns an empty array if the buffer do not contains a valid array.
      *
+     * @throws \JsonException If an error occures while decoding the json.
      * @return array
      */
     public function read(): array
     {
         $aReturn = [];
 
-        if (is_array($this->sSource)) {
-            $aReturn = $this->sSource;
+        if (strlen($this->sSource) > 0) {
+            $aReturn = json_decode($this->sSource, true);
+            if (!is_array($aReturn)) {
+                $aReturn = [];
+            }
         }
 
         return $aReturn;

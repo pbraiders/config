@@ -11,7 +11,8 @@ declare(strict_types=1);
 namespace Pbraiders\Config\Reader;
 
 /**
- * Undocumented class
+ * Read a file and returns an array.
+ * Returns an exception if the file does not exist or is not readable.
  */
 class FileMandatory extends Decorator
 {
@@ -26,12 +27,11 @@ class FileMandatory extends Decorator
      * Set the source to read
      *
      * @param string $source Usely, a filename.
-     * @return self
+     * @return void
      */
-    public function setSource(string $source): self
+    public function setSource(string $source): void
     {
         $this->sSource = trim($source);
-        return $this;
     }
 
     /**
@@ -54,7 +54,8 @@ class FileMandatory extends Decorator
         }
 
         // Reads
-        $aReturn = $this->pReader->setSource($this->sSource)->read();
+        $this->pReader->setSource($this->sSource);
+        $aReturn = $this->pReader->read();
 
         return $aReturn;
     }

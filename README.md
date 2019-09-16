@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/pbraiders/config/master.svg?style=flat-square)](https://travis-ci.com/pbraiders/config.svg?branch=master)
 
-Pbraiders\Config is a factory that create an array or an ojbect implementing ArrayAccess.
+Pbraiders\Config is a factory that create an array or an object implementing ArrayAccess.
 
 *Note: we use this package for our own projects, it contains only the features we need.*
 
@@ -13,6 +13,7 @@ Pbraiders\Config is a factory that create an array or an ojbect implementing Arr
 ## Requirements
 
 - PHP: >=7.3
+- pbraiders/stdlib: >=1.0
 
 ## Installation
 
