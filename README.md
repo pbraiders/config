@@ -1,6 +1,6 @@
 # Pbraiders-config
 
-[![Build Status](https://img.shields.io/travis/pbraiders/config/master.svg?style=flat-square)](https://travis-ci.com/pbraiders/config.svg?branch=master)
+[![Build Status](https://travis-ci.com/pbraiders/config.svg?branch=master)](https://travis-ci.com/pbraiders/config)
 
 Pbraiders\Config is a factory that create an array or an object implementing ArrayAccess.
 
