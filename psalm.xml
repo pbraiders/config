@@ -16,7 +16,7 @@
     checkForThrowsInGlobalScope="true"
     findUnusedVariablesAndParams="true"
     throwExceptionOnError="false"
-    cacheDirectory="docs/psalm"
+    cacheDirectory="build/psalm"
     hideExternalErrors="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"

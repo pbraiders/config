@@ -107,7 +107,7 @@ class ArrayFactory implements FactoryInterface
         $aLocalSettings = $this->pReaderOptional->read();
 
         // Replace main settings with local settings.
-        if (!empty($aLocalSettings)) {
+        if (count($aLocalSettings) > 0) {
             $aSettings = array_replace_recursive($aSettings, $aLocalSettings);
         }
 

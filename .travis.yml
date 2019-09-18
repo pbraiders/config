@@ -5,17 +5,29 @@ language: php
 php:
   - '7.3'
 
-cache:
- directories:
-   - $HOME/.composer/cache
+git:
+  quiet: true
 
-before_script:
- - composer self-update
- - composer install --prefer-dist --no-interaction --no-progress
- - cd $TRAVIS_BUILD_DIR
+cache:
+  directories:
+    - $HOME/.composer/cache
 
 matrix:
   fast_finish: true
+
+before_install:
+  - travis_retry composer self-update
+  - mkdir -p build/logs
+
+install:
+  - travis_retry composer install --prefer-dist --no-interaction --no-progress
+  - cd $TRAVIS_BUILD_DIR
+
+script:
+  - composer run-script test --verbose
+
+after_success:
+  - travis_retry php vendor/bin/php-coveralls -v
 
 notifications:
   email: false

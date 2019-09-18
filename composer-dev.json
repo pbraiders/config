@@ -1,0 +1,69 @@
+{
+    "name": "pbraiders/config",
+    "description": "PBRaiders Config component",
+    "homepage": "https://github.com/pbraiders/config",
+    "readme": "README.md",
+    "time": "2019-09-10",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Olivier Jullien",
+            "homepage": "https://github.com/ojullien",
+            "email": "contact@pbraiders.fr"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "github",
+            "url": "https://github.com/pbraiders/stdlib"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "pbraiders/stdlib": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pbraiders\\Config\\": "src/"
+        }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "php-coveralls/php-coveralls": "^2.1",
+        "phpmd/phpmd": "@stable",
+        "phpstan/phpstan": "^0.11",
+        "phpstan/phpstan-strict-rules": "^0.11",
+        "phpunit/phpunit": "^8",
+        "squizlabs/php_codesniffer": "*",
+        "vimeo/psalm": "^3.4"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PbraidersTest\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "vendor-dir": "vendor"
+    },
+    "scripts": {
+        "analyse": [
+            "@analysebyphpstan",
+            "@analysebymd",
+            "@analysebypsalm"
+        ],
+        "analysebyphpstan": "vendor/bin/phpstan analyse src --level=max -c ./phpstan.neon --no-progress",
+        "analysebymd": "vendor/bin/phpmd src text ./phpmd.xml --exclude '*/vendor/*,*/old/*'",
+        "analysebypsalm": "vendor/bin/psalm --config=./psalm.xml",
+        "check": "vendor/bin/phpcs --standard=./phpcs.xml",
+        "fix": [
+            "@fixbysquizlabs",
+            "@fixbyfriendsofphp"
+        ],
+        "fixbysquizlabs": "vendor/bin/phpcbf --standard=./phpcs.xml",
+        "fixbyfriendsofphp": "vendor/bin/php-cs-fixer fix --verbose --diff src",
+        "test": "vendor/bin/phpunit --configuration ./phpunit.xml.dist --colors=always --coverage-clover build/logs/clover.xml",
+        "testcover": "vendor/bin/phpunit --configuration ./phpunit.xml.dist --colors=always --coverage-html build/logs/codecoverage"
+    }
+}

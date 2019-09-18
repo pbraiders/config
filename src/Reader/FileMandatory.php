@@ -46,7 +46,7 @@ class FileMandatory extends Decorator
         $aReturn = [];
 
         // File must exists
-        if ((strlen($this->sSource) === 0) || !is_file($this->sSource) || !is_readable($this->sSource)) {
+        if ((strlen($this->sSource) === 0) || ! is_file($this->sSource) || ! is_readable($this->sSource)) {
             throw new \RuntimeException(sprintf(
                 "File '%s' doesn't exist or not readable",
                 $this->sSource

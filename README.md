@@ -1,6 +1,7 @@
 # Pbraiders-config
 
 [![Build Status](https://travis-ci.com/pbraiders/config.svg?branch=master)](https://travis-ci.com/pbraiders/config)
+[![Coverage Status](https://coveralls.io/repos/github/pbraiders/config/badge.svg?branch=master)](https://coveralls.io/github/pbraiders/config?branch=master)
 
 Pbraiders\Config is a factory that create an array or an object implementing ArrayAccess.
 
@@ -12,8 +13,8 @@ Pbraiders\Config is a factory that create an array or an object implementing Arr
 
 ## Requirements
 
-- PHP: >=7.3
-- pbraiders/stdlib: >=1.0
+- PHP: ^7.3
+- pbraiders/stdlib: ^1.0
 
 ## Installation
 
