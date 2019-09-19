@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PbraidersTest\Config\Reader;
 
-use PbraidersTest\Utils\ReflectionTrait;
 use Pbraiders\Config\Reader\FileOptional;
 use Pbraiders\Config\Reader\FileMandatory;
+use Pbraiders\Stdlib\ReflectionTrait;
 
 class DecoratorTest extends \PHPUnit\Framework\TestCase
 {
@@ -21,7 +21,7 @@ class DecoratorTest extends \PHPUnit\Framework\TestCase
     {
         $pReaderFileOptional = new FileOptional();
         $pReaderFileMandatory = new FileMandatory($pReaderFileOptional);
-        $pProperty = $this->getPrivateProperty('\Pbraiders\Config\Reader\FileMandatory', 'pReader');
+        $pProperty = $this->getProperty('\Pbraiders\Config\Reader\FileMandatory', 'pReader');
         $pActual = $pProperty->getValue($pReaderFileMandatory);
         $this->assertSame($pReaderFileOptional, $pActual);
     }

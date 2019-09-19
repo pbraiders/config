@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "pbraiders/stdlib",
-            "version": "v1.0.5",
+            "version": "v1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pbraiders/stdlib.git",
-                "reference": "7a12264d6a92c35f8241cc6902b4be048ccc9b76"
+                "reference": "94531b53deb65d295ad44bba58ce6688fc094004"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pbraiders/stdlib/zipball/7a12264d6a92c35f8241cc6902b4be048ccc9b76",
-                "reference": "7a12264d6a92c35f8241cc6902b4be048ccc9b76",
+                "url": "https://api.github.com/repos/pbraiders/stdlib/zipball/94531b53deb65d295ad44bba58ce6688fc094004",
+                "reference": "94531b53deb65d295ad44bba58ce6688fc094004",
                 "shasum": ""
             },
             "require": {
@@ -62,7 +62,7 @@
             "description": "Pbraiders stdlib component",
             "homepage": "https://github.com/pbraiders/stdlib",
             "support": {
-                "source": "https://github.com/pbraiders/stdlib/tree/v1.0.5",
+                "source": "https://github.com/pbraiders/stdlib/tree/v1.0.6",
                 "issues": "https://github.com/pbraiders/stdlib/issues"
             },
             "time": "2019-09-10T00:00:00+00:00"
