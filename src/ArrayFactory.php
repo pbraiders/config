@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 /**
  * @package Pbraiders\Config
- * @link    https://github.com/pbraiders/Config for the canonical source repository
- * @license https://github.com/pbraiders/Config/blob/master/LICENSE GNU General Public License v3.0 License.
+ * @link    https://github.com/pbraiders/config for the canonical source repository
+ * @license https://github.com/pbraiders/config/blob/master/LICENSE GNU General Public License v3.0 License.
  */
 
 namespace Pbraiders\Config;
 
+use Pbraiders\Config\Exception\FileDoNotExistNorReadableException;
 use Pbraiders\Config\Reader\ReaderInterface;
-use Pbraiders\Config\Processor\ProcessorInterface;
+use Pbraiders\Config\Processor\ProcessorAwareInterface;
+use Pbraiders\Config\Processor\ProcessorTrait;
 use function Pbraiders\Stdlib\sortArrayByKey;
 
 /**
@@ -20,8 +22,9 @@ use function Pbraiders\Stdlib\sortArrayByKey;
  * Reads the main mandatory config file and return it as a sorted array.
  * If the optional config file exists, its content replace the main config file content.
  */
-class ArrayFactory implements FactoryInterface
+class ArrayFactory implements FactoryInterface, ProcessorAwareInterface
 {
+    use ProcessorTrait;
 
     /**
      * Reader for the mandatory main config file.
@@ -36,13 +39,6 @@ class ArrayFactory implements FactoryInterface
      * @var \Pbraiders\Config\Reader\ReaderInterface
      */
     protected $pReaderOptional;
-
-    /**
-     * Chain of processor.
-     *
-     * @var \Pbraiders\Config\Processor\ProcessorInterface
-     */
-    protected $pProcessorChain;
 
     /**
      * Constructor.
@@ -81,21 +77,9 @@ class ArrayFactory implements FactoryInterface
     }
 
     /**
-     * Set the first processor.
-     *
-     * @param \Pbraiders\Config\Processor\ProcessorInterface $processor
-     * @return self
-     */
-    public function setProcessor(ProcessorInterface $processor): self
-    {
-        $this->pProcessorChain = $processor;
-        return $this;
-    }
-
-    /**
      * Build an array from php file.
      *
-     * @throws \RuntimeException If file does not exist.
+     * @throws FileDoNotExistNorReadableException If file does not exist.
      * @return array
      */
     public function create()
@@ -112,9 +96,7 @@ class ArrayFactory implements FactoryInterface
         }
 
         // Transforms
-        if (isset($this->pProcessorChain)) {
-            $aSettings = $this->pProcessorChain->process($aSettings);
-        }
+        $aSettings = $this->transform($aSettings);
 
         // Sorts
         sortArrayByKey($aSettings);

@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 namespace Pbraiders\Config\Reader;
 
+use Pbraiders\Config\Exception\FileDoNotExistNorReadableException;
+
 /**
  * Read a file and returns an array.
  * Returns an exception if the file does not exist or is not readable.
@@ -37,7 +39,7 @@ class FileMandatory extends Decorator
     /**
      * Read a file and returns an array.
      *
-     * @throws \RuntimeException if the file does not exist or is not readable.
+     * @throws FileDoNotExistNorReadableException if the file does not exist or is not readable.
      * @return array
      */
     public function read(): array
@@ -47,7 +49,7 @@ class FileMandatory extends Decorator
 
         // File must exists
         if ((strlen($this->sSource) === 0) || ! is_file($this->sSource) || ! is_readable($this->sSource)) {
-            throw new \RuntimeException(sprintf(
+            throw new FileDoNotExistNorReadableException(sprintf(
                 "File '%s' doesn't exist or not readable",
                 $this->sSource
             ));
