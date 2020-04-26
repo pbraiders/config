@@ -3,9 +3,15 @@
 [![Build Status](https://travis-ci.com/pbraiders/config.svg?branch=master)](https://travis-ci.com/pbraiders/config)
 [![Coverage Status](https://coveralls.io/repos/github/pbraiders/config/badge.svg?branch=master)](https://coveralls.io/github/pbraiders/config?branch=master)
 
-Pbraiders\Config is a factory that create an array or an object implementing ArrayAccess.
+Pbraiders\Config is a factory that create an array or an object implementing ArrayAccess from PHP array files.
 
-*Note: we use this package for our own projects, it contains only the features we need.*
+The factory does the following steps :
+
+- Reads the mandatory file.
+- Reads the optional file and merge its content. The values of the optional file replace the values of the mandatory file.
+- Applies Processors classes to modify the final array before return it.
+
+_Note: we use this package for our own projects, it contains only the features we need._
 
 ## Table of Contents
 
