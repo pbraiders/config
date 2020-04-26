@@ -20,7 +20,7 @@ _Note: we use this package for our own projects, it contains only the features w
 ## Requirements
 
 - PHP: ^7.4
-- pbraiders/stdlib: ^1.0
+- pbraiders/stdlib: ^2.0
 
 ## Installation
 
