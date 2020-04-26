@@ -22,7 +22,7 @@ abstract class Decorator implements ReaderInterface
     /**
      * @var \Pbraiders\Config\Reader\ReaderInterface Instance of a reader.
      */
-    protected $pReader;
+    protected \Pbraiders\Config\Reader\ReaderInterface $pReader;
 
     /**
      * Constructor.

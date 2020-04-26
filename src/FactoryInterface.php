@@ -20,7 +20,7 @@ interface FactoryInterface
     /**
      * Creates a config array or object implementing ArrayAccess.
      *
-     * @return array|ArrayAccess
+     * @return array<mixed>|ArrayAccess
      */
     public function create();
 }

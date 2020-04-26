@@ -21,7 +21,7 @@ class FileOptional implements ReaderInterface
      *
      * @var string sSource.
      */
-    protected $sSource = '';
+    protected string $sSource = '';
 
     /**
      * Set the source to read
@@ -38,7 +38,7 @@ class FileOptional implements ReaderInterface
      * Read a file and returns an array.
      * Returns an empty array if the file does not exist or is not readable.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function read(): array
     {

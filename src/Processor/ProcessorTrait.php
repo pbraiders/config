@@ -25,7 +25,7 @@ trait ProcessorTrait
      *
      * @var \Pbraiders\Config\Processor\ProcessorInterface
      */
-    protected $pProcessorChain;
+    protected \Pbraiders\Config\Processor\ProcessorInterface $pProcessorChain;
 
     /**
      * Set the first processor.

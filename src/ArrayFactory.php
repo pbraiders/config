@@ -14,7 +14,7 @@ use Pbraiders\Config\Exception\FileDoNotExistNorReadableException;
 use Pbraiders\Config\Reader\ReaderInterface;
 use Pbraiders\Config\Processor\ProcessorAwareInterface;
 use Pbraiders\Config\Processor\ProcessorTrait;
-use function Pbraiders\Stdlib\sortArrayByKey;
+use function Pbraiders\Stdlib\ksort_recursive;
 
 /**
  * Array config factory.
@@ -31,14 +31,14 @@ class ArrayFactory implements FactoryInterface, ProcessorAwareInterface
      *
      * @var \Pbraiders\Config\Reader\ReaderInterface
      */
-    protected $pReaderMandatory;
+    protected \Pbraiders\Config\Reader\ReaderInterface $pReaderMandatory;
 
     /**
      * Reader for the optional local config file.
      *
      * @var \Pbraiders\Config\Reader\ReaderInterface
      */
-    protected $pReaderOptional;
+    protected \Pbraiders\Config\Reader\ReaderInterface $pReaderOptional;
 
     /**
      * Constructor.
@@ -80,18 +80,16 @@ class ArrayFactory implements FactoryInterface, ProcessorAwareInterface
      * Build an array from php file.
      *
      * @throws FileDoNotExistNorReadableException If file does not exist.
-     * @return array
+     * @return array<mixed>
      */
     public function create()
     {
-        /** @var array $aSettings Contains main mandotary settings.*/
         $aSettings = $this->pReaderMandatory->read();
 
-        /** @var array $aLocalSettings Contains optional local settings */
         $aLocalSettings = $this->pReaderOptional->read();
 
         // Replace main settings with local settings.
-        if (count($aLocalSettings) > 0) {
+        if (is_countable($aLocalSettings) && count($aLocalSettings) > 0) {
             $aSettings = array_replace_recursive($aSettings, $aLocalSettings);
         }
 
@@ -99,7 +97,7 @@ class ArrayFactory implements FactoryInterface, ProcessorAwareInterface
         $aSettings = $this->transform($aSettings);
 
         // Sorts
-        sortArrayByKey($aSettings);
+        ksort_recursive($aSettings);
 
         return $aSettings;
     }

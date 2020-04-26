@@ -23,7 +23,7 @@ class FileMandatory extends Decorator
      *
      * @var string sSource.
      */
-    protected $sSource = '';
+    protected string $sSource = '';
 
     /**
      * Set the source to read
@@ -40,7 +40,7 @@ class FileMandatory extends Decorator
      * Read a file and returns an array.
      *
      * @throws FileDoNotExistNorReadableException if the file does not exist or is not readable.
-     * @return array
+     * @return array<mixed>
      */
     public function read(): array
     {

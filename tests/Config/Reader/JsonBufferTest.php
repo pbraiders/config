@@ -38,10 +38,24 @@ class JsonBufferTest extends \PHPUnit\Framework\TestCase
      * @covers \Pbraiders\Config\Reader\JsonBuffer
      * @group specification
      */
+    public function testReadEmpty()
+    {
+        $aExpected = [];
+        $pReader = new JsonBuffer();
+        $pReader->setSource("");
+        $aActual = $pReader->read();
+        $this->assertEquals($aExpected, $aActual);
+    }
+
+    /**
+     * @covers \Pbraiders\Config\Reader\JsonBuffer
+     * @group specification
+     */
     public function testReadError()
     {
         $pReader = new JsonBuffer();
         $pReader->setSource("{ 'bar': 'baz' }");
+        $this->expectException(\JsonException::class);
         $aActual = $pReader->read();
         $this->assertEquals([], $aActual);
     }

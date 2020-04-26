@@ -26,7 +26,7 @@ interface ReaderInterface
     /**
      * Read from a source and create an array.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function read(): array;
 }

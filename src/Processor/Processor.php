@@ -18,7 +18,7 @@ abstract class Processor implements ProcessorInterface
     /**
      * @var \Pbraiders\Config\Processor\ProcessorInterface The next processor.
      */
-    private $pNextProcessor;
+    private \Pbraiders\Config\Processor\ProcessorInterface $pNextProcessor;
 
     /**
      * Chain the next processor.

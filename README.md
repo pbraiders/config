@@ -13,12 +13,12 @@ Pbraiders\Config is a factory that create an array or an object implementing Arr
 
 ## Requirements
 
-- PHP: ^7.3
+- PHP: ^7.4
 - pbraiders/stdlib: ^1.0
 
 ## Installation
 
-This package requires PHP 7.3. For specifics, please examine the package [composer.json](https://github.com/pbraiders/config/blob/master/composer.json) file.
+This package requires PHP 7.4. For specifics, please examine the package [composer.json](https://github.com/pbraiders/config/blob/master/composer.json) file.
 
 You may check if your PHP and extension versions match the platform requirements using `composer diagnose` and `composer check-platform-reqs`. (This requires [Composer](https://getcomposer.org/) to be available as composer.)
 

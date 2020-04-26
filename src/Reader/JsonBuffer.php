@@ -20,7 +20,7 @@ class JsonBuffer implements ReaderInterface
      *
      * @var string sSource.
      */
-    protected $sSource = '';
+    protected string $sSource = '';
 
     /**
      * Set the source to read.
@@ -38,19 +38,16 @@ class JsonBuffer implements ReaderInterface
      * Returns an empty array if the buffer do not contains a valid array.
      *
      * @throws \JsonException If an error occures while decoding the json.
-     * @return array
+     * @return array<mixed>
      */
     public function read(): array
     {
-        $aReturn = [];
-
         if (strlen($this->sSource) > 0) {
-            $aReturn = json_decode($this->sSource, true);
-            if (!is_array($aReturn)) {
-                $aReturn = [];
-            }
+            $aReturn = json_decode($this->sSource, true, 512, \JSON_THROW_ON_ERROR);
+        } else {
+            $aReturn = [];
         }
 
-        return $aReturn;
+        return is_array($aReturn) ? $aReturn : [];
     }
 }
