@@ -52,4 +52,4 @@ Be sure to include a title and clear description,as much relevant information as
 
 ## License
 
-**PBRaiders Config** is open-source and is licensed under the [GNU General Public License v3.0 License](https://github.com/pbraiders/config/blob/master/LICENSE).
+**PBRaiders Config** is open-source and is licensed under the [MIT License](LICENSE).
